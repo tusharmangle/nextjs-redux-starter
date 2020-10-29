@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply text-white px-5 py-2 rounded uppercase mx-2 font-semibold;
+}
+.btn:focus {
+  @apply outline-none;
+}
+
+.btn-danger {
+  @apply bg-red-600;
+}
+
+.btn-primary {
+  @apply bg-blue-600;
+}

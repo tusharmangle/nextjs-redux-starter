@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../styles/tailwind.css";
 
 import { Provider } from "react-redux";
 

@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../redux";
+import Link from "next/link";
 function Posts() {
-  const posts = useSelector((state) => state.post.posts);
+  const { posts, loading } = useSelector((state) => state.post);
 
   const dispatch = useDispatch();
 
@@ -10,14 +11,16 @@ function Posts() {
     dispatch(fetchPosts());
   }, []);
 
+  const renderPosts = posts.map((post) => <h3 key={post.id}>{post.title}</h3>);
+
   return (
-    <div>
-      <h1>Posts</h1>
-      <div>
-        {posts.map((post) => (
-          <h3 key={post.id}>{post.title}</h3>
-        ))}
-      </div>
+    <div className="container mx-auto">
+      <h1 className="text-2xl my-2">
+        <Link href="/">Home</Link>
+      </h1>
+      <h1 className="text-5xl">Posts</h1>
+      <div> {loading && "Loading"}</div>
+      <div className="text-lg">{!loading && renderPosts}</div>
     </div>
   );
 }
